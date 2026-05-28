@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Edit(*)",
+      "Write(*)",
+      "Read(*)",
+      "mcp__github__*",
+      "mcp__3b1c2e18-66c2-4b21-a3d7-a5eb52232da3__*"
+    ]
+  }
+}

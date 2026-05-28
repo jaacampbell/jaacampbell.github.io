@@ -1,0 +1,3 @@
+# 007 Security Skill — no external dependencies required.
+# All scanners use Python 3.10+ standard library only.
+# Python >= 3.10
