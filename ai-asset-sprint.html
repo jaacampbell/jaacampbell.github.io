@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Asset Sprint – James Campbell</title>
+    <style>
+        body {
+            background: rgb(125, 198, 205);
+            color: rgb(45, 45, 45);
+            padding: 10px;
+            font-family: arial;
+        }
+        header {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        #all-contents {
+            max-width: 860px;
+            margin: auto;
+        }
+
+        /* navigation */
+        nav {
+            background: rgb(51, 70, 196);
+            margin: 0 auto;
+            margin-bottom: 20px;
+            display: flex;
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 25px;
+        }
+        nav header {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            flex: 1;
+        }
+        nav ul { list-style: none; margin: 0; padding: 0; }
+        nav li { display: inline-block; padding: 0 10px; }
+        nav a { text-decoration: none; color: #fff; }
+
+        /* main card */
+        main {
+            background: rgb(245, 238, 219);
+            padding: 20px 25px;
+        }
+
+        h1 { margin-top: 0; font-size: 1.8em; }
+        h2 { font-size: 1.3em; margin-top: 2em; border-bottom: 2px solid rgb(51,70,196); padding-bottom: 4px; }
+        h3 { font-size: 1.1em; margin-top: 1.4em; }
+
+        /* hero banner */
+        .hero {
+            background: linear-gradient(135deg, rgb(51,70,196), rgb(239,80,41));
+            color: #fff;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 28px;
+        }
+        .hero h1 { color: #fff; margin: 0 0 8px 0; font-size: 2em; }
+        .hero p { margin: 0; font-size: 1.05em; opacity: 0.9; }
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            border-radius: 20px;
+            padding: 3px 12px;
+            font-size: 0.85em;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        /* phase cards */
+        .phases { display: flex; gap: 14px; flex-wrap: wrap; margin: 20px 0; }
+        .phase {
+            flex: 1;
+            min-width: 200px;
+            border-radius: 10px;
+            padding: 16px;
+            color: #fff;
+        }
+        .phase-1 { background: rgb(51,70,196); }
+        .phase-2 { background: rgb(239,80,41); }
+        .phase-3 { background: rgb(34,139,87); }
+        .phase h3 { margin-top: 0; font-size: 1em; color: #fff; }
+        .phase ul { padding-left: 18px; margin: 0; }
+        .phase li { margin-bottom: 4px; font-size: 0.9em; }
+
+        /* flow diagram */
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin: 18px 0;
+            font-size: 0.85em;
+        }
+        .flow-node {
+            background: #fff;
+            border: 2px solid rgb(51,70,196);
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        .flow-arrow { color: rgb(51,70,196); font-size: 1.3em; font-weight: bold; }
+
+        /* setup steps */
+        .setup-step {
+            background: #fff;
+            border-left: 5px solid rgb(51,70,196);
+            border-radius: 0 10px 10px 0;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+        }
+        .setup-step h3 { margin: 0 0 8px 0; font-size: 1em; }
+        .setup-step ol, .setup-step ul { margin: 6px 0 0 0; padding-left: 20px; }
+        .setup-step li { margin-bottom: 4px; }
+
+        .note {
+            background: rgb(255, 244, 210);
+            border-left: 4px solid rgb(239,80,41);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+
+        code {
+            background: #e8e8e8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* cost table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 0.9em;
+        }
+        th {
+            background: rgb(51,70,196);
+            color: #fff;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        td { padding: 7px 12px; border-bottom: 1px solid #ddd; }
+        tr:nth-child(even) td { background: #f5f5f5; }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: rgb(51,70,196);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+<div id="all-contents">
+
+    <nav>
+        <header>James's Supercoolio Site</header>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <!-- Hero -->
+        <div class="hero">
+            <h1>⚡ AI Asset Sprint</h1>
+            <p>An n8n automation workflow that turns a single keyword into two fully-formatted digital products in minutes — a complete ebook (with cover) and a value-enhancer bonus pack, both delivered as DOCX files.</p>
+            <br>
+            <span class="badge">n8n</span>
+            <span class="badge">OpenAI GPT-4.1</span>
+            <span class="badge">GPT Image 1</span>
+            <span class="badge">Cloudinary</span>
+            <span class="badge">ConvertAPI</span>
+        </div>
+
+        <!-- What it does -->
+        <h2>What it does</h2>
+        <p>Enter a topic or niche (e.g. "productivity for freelancers") into a chat trigger. The workflow fans out across three phases of AI agents and returns two download-ready DOCX files — no manual writing, no design work.</p>
+
+        <div class="phases">
+            <div class="phase phase-1">
+                <h3>Phase 1 — Ideation</h3>
+                <ul>
+                    <li>Uncovers 10 customer pain points</li>
+                    <li>Generates solutions for each pain</li>
+                    <li>Applies the $100M Offers framework to build an irresistible core offer</li>
+                </ul>
+            </div>
+            <div class="phase phase-2">
+                <h3>Phase 2 — Asset Creation</h3>
+                <ul>
+                    <li>Generates 3 ebook title candidates, picks the best</li>
+                    <li>Builds a 6-section content outline</li>
+                    <li>Designs a cover image (GPT Image 1)</li>
+                    <li>Writes the full ebook (~3,000 words)</li>
+                </ul>
+            </div>
+            <div class="phase phase-3">
+                <h3>Phase 3 — Value Stack</h3>
+                <ul>
+                    <li>Proposes 5 high-value bonuses</li>
+                    <li>Creates a workbook outline</li>
+                    <li>Designs a One-Time Offer ($97–$297)</li>
+                    <li>Delivers both DOCX links in chat</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Node flow -->
+        <h2>Workflow Node Map</h2>
+
+        <div class="flow">
+            <div class="flow-node">Chat Trigger</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Brainstorm Pains</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Generate Solutions</div><span class="flow-arrow">→</span>
+            <div class="flow-node">$100M Offer</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Create Offer Title</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Build Outline</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node">Build Outline</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Generate Image Cover</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Upload to Cloudinary</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Write Full Ebook</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Build HTML</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Convert to DOCX</div>
+        </div>
+        <div class="flow">
+            <div class="flow-node">Convert to DOCX</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Value Enhancer</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Build HTML (VE)</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Convert VE to DOCX</div><span class="flow-arrow">→</span>
+            <div class="flow-node">Files Ready! ✅</div>
+        </div>
+
+        <!-- How to build -->
+        <h2>How to Build It — Step-by-Step Setup</h2>
+
+        <div class="setup-step">
+            <h3>🔵 Step 1 — Import the Workflow into n8n</h3>
+            <ol>
+                <li>Open your n8n instance (cloud or self-hosted).</li>
+                <li>Click <strong>+ New Workflow</strong> → <strong>Import from JSON</strong>.</li>
+                <li>Paste the workflow JSON (available from the author: <a href="https://www.instagram.com/effortlessdigitaldon/" target="_blank">@effortlessdigitaldon</a>).</li>
+                <li>Save the workflow.</li>
+            </ol>
+        </div>
+
+        <div class="setup-step">
+            <h3>🟠 Step 2 — Set Up OpenAI (content + images)</h3>
+            <ol>
+                <li>Go to <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com/api-keys</a> and create an account.</li>
+                <li>Generate a new API key.</li>
+                <li>In n8n, go to <strong>Credentials → New → OpenAI</strong> and paste your key.</li>
+                <li>Assign this credential to all OpenAI nodes in the workflow.</li>
+            </ol>
+            <div class="note">
+                <strong>Cost:</strong> ~$0.25 per complete run (ebook + cover image + bonus pack) using GPT-4.1 and GPT Image 1.
+            </div>
+            <div class="note">
+                <strong>Note:</strong> GPT Image 1 requires identity verification on your OpenAI account to prevent misuse.
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3>🟢 Step 3 — Set Up Cloudinary (image hosting)</h3>
+            <ol>
+                <li>Sign up free at <a href="https://cloudinary.com/users/register_free" target="_blank">cloudinary.com</a>.</li>
+                <li>Note your <strong>Cloud Name</strong> from the dashboard.</li>
+                <li>Go to <strong>Settings → Upload → Add upload preset</strong>.</li>
+                <li>Set Signing Mode to <strong>Unsigned</strong>.</li>
+                <li>Set Preset name to exactly: <code>aiasset_preset</code></li>
+                <li>Click Save.</li>
+                <li>In the n8n workflow, find the <strong>Get Img Link</strong> node and replace <code>CLOUD_NAME</code> in the URL with your actual Cloud Name.</li>
+            </ol>
+            <div class="note">
+                <strong>Cost:</strong> Free — the free plan supports thousands of image uploads per month.
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3>🔴 Step 4 — Set Up ConvertAPI (HTML → DOCX)</h3>
+            <ol>
+                <li>Sign up at <a href="https://www.convertapi.com/" target="_blank">convertapi.com</a>.</li>
+                <li>Find your <strong>API Secret</strong> under Authentication → Secret Key (starts with <code>secret_</code>).</li>
+                <li>In n8n, go to <strong>Credentials → New → ConvertAPI</strong> and paste your secret.</li>
+                <li>Assign this credential to both <em>Convert eBook to DOCX</em> and <em>Convert Value to DOCX</em> nodes.</li>
+            </ol>
+            <div class="note">
+                <strong>Cost:</strong> Free tier = 250 conversions. Paid plans available for high-volume use.
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3>✅ Step 5 — Activate and Test</h3>
+            <ol>
+                <li>Toggle the workflow to <strong>Active</strong>.</li>
+                <li>Open the chat trigger URL in your browser.</li>
+                <li>Type a niche keyword, e.g. <code>dog training for first-time owners</code>.</li>
+                <li>Wait ~2–3 minutes for all AI agents to run.</li>
+                <li>You'll receive two DOCX download links in chat — done!</li>
+            </ol>
+        </div>
+
+        <!-- Cost summary -->
+        <h2>Cost Summary</h2>
+        <table>
+            <tr><th>Service</th><th>What it's used for</th><th>Estimated cost</th></tr>
+            <tr><td>OpenAI (GPT-4.1)</td><td>All text generation (pains, offer, outline, ebook, bonuses)</td><td>~$0.20 / run</td></tr>
+            <tr><td>OpenAI (GPT Image 1)</td><td>Ebook cover image</td><td>~$0.04 / run</td></tr>
+            <tr><td>Cloudinary</td><td>Host the cover image so ConvertAPI can fetch it</td><td>Free</td></tr>
+            <tr><td>ConvertAPI</td><td>Convert HTML → DOCX (x2 per run)</td><td>Free (250 runs) then paid</td></tr>
+            <tr><td>n8n</td><td>Workflow automation platform</td><td>Free self-hosted / Cloud from $20/mo</td></tr>
+        </table>
+
+        <!-- Tips -->
+        <h2>Tips &amp; Troubleshooting</h2>
+        <ul>
+            <li><strong>Cover image missing in DOCX:</strong> Make sure your Cloudinary upload preset is set to <em>Unsigned</em> and named exactly <code>aiasset_preset</code>.</li>
+            <li><strong>JSON parse errors in Value Enhancer:</strong> GPT-4.1 occasionally wraps JSON in markdown code fences. The <em>Build HTML (Value Enhancer)</em> node handles this, but if it fails, check the <code>message.content</code> field in the node output.</li>
+            <li><strong>ConvertAPI 401 errors:</strong> Your secret key may have expired. Regenerate it in your ConvertAPI dashboard.</li>
+            <li><strong>Slow runs:</strong> GPT Image 1 generation takes ~30–60 seconds. The full workflow typically completes in 2–4 minutes.</li>
+            <li><strong>Rate limits:</strong> If you run many workflows rapidly, OpenAI may rate-limit you. Add a <em>Wait</em> node between heavy API calls if needed.</li>
+        </ul>
+
+        <a class="back-link" href="portfolio.html">← Back to Portfolio</a>
+
+    </main>
+
+</div>
+</body>
+</html>
