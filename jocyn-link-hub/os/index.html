@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="color-scheme" content="dark">
+<title>JO₵YN OS — Social Command Center</title>
+<meta name="description" content="JO₵YN creator operating system prototype.">
+<link rel="stylesheet" href="./os.css">
+</head>
+<body>
+<div class="app" id="app">
+  <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+    <div class="brand-lockup">
+      <div class="brand-mark">J</div>
+      <div><strong>JO₵YN OS</strong><span>Creator headquarters</span></div>
+    </div>
+
+    <button class="workspace" id="workspaceBtn" type="button">
+      <span class="workspace-avatar">J</span>
+      <span class="workspace-copy"><strong>JO₵YN</strong><small>Artist workspace</small></span>
+      <span class="chev">⌄</span>
+    </button>
+
+    <button class="create-primary" id="createBtn" type="button"><span>＋</span>Create</button>
+
+    <nav class="nav-list">
+      <button class="nav-item active" data-view="home"><span>⌂</span><b>Command Center</b></button>
+      <button class="nav-item" data-view="content"><span>▦</span><b>Content Studio</b></button>
+      <button class="nav-item" data-view="ideas"><span>✦</span><b>Ideas</b></button>
+      <button class="nav-item" data-view="calendar"><span>□</span><b>Calendar</b></button>
+      <button class="nav-item" data-view="campaigns"><span>◎</span><b>Campaigns</b></button>
+      <button class="nav-item" data-view="projects"><span>◫</span><b>Projects</b></button>
+      <button class="nav-item" data-view="linkhub"><span>↗</span><b>Link Hub</b></button>
+      <button class="nav-item" data-view="analytics"><span>⌁</span><b>Analytics</b></button>
+      <button class="nav-item" data-view="media"><span>◩</span><b>Media</b></button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="nav-item" data-view="settings"><span>⚙</span><b>Settings</b></button>
+      <a class="public-link" href="../index.html" target="_blank" rel="noopener"><span>↗</span><b>View public hub</b></a>
+    </div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar">
+      <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
+      <div class="breadcrumb"><span>JO₵YN</span><strong id="viewTitle">Command Center</strong></div>
+      <div class="top-actions">
+        <button class="search-btn" id="searchBtn" type="button"><span>⌕</span><span>Search anything</span><kbd>⌘ K</kbd></button>
+        <button class="round-btn" id="notifBtn" type="button" aria-label="Notifications"><span>•</span></button>
+        <button class="round-btn ai-round" id="aiBtn" type="button" aria-label="Ask AI">✦</button>
+      </div>
+    </header>
+    <main class="workspace-main" id="viewRoot" tabindex="-1"></main>
+  </div>
+
+  <nav class="mobile-dock" aria-label="Mobile navigation">
+    <button data-view="home" class="active"><span>⌂</span><small>Home</small></button>
+    <button data-view="content"><span>▦</span><small>Content</small></button>
+    <button id="mobileCreate"><span class="dock-create">＋</span><small>Create</small></button>
+    <button id="mobileAi"><span>✦</span><small>AI</small></button>
+    <button id="mobileMore"><span>•••</span><small>More</small></button>
+  </nav>
+</div>
+
+<div class="overlay" id="createOverlay" aria-hidden="true">
+  <section class="modal create-modal" role="dialog" aria-modal="true" aria-labelledby="createTitle">
+    <div class="modal-head">
+      <div><span class="overline">UNIVERSAL LAUNCHER</span><h2 id="createTitle">What are we making?</h2></div>
+      <button class="icon-close" data-close="createOverlay">×</button>
+    </div>
+    <div class="create-grid" id="createGrid"></div>
+    <button class="ai-create" id="startWithAi"><span>✦</span><div><strong>Start with AI</strong><small>Describe a goal and build the plan from there.</small></div><b>→</b></button>
+  </section>
+</div>
+
+<div class="overlay" id="commandOverlay" aria-hidden="true">
+  <section class="modal command-modal" role="dialog" aria-modal="true" aria-labelledby="commandInput">
+    <div class="command-input-wrap"><span>⌕</span><input id="commandInput" placeholder="Search or run a command…" autocomplete="off"><kbd>ESC</kbd></div>
+    <div class="command-results" id="commandResults" aria-live="polite"></div>
+  </section>
+</div>
+
+<div class="overlay drawer-overlay" id="aiOverlay" aria-hidden="true">
+  <aside class="ai-drawer" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
+    <div class="drawer-head">
+      <div><span class="overline">CONTEXTUAL AI</span><h2 id="aiTitle">JO₵YN Assistant</h2></div>
+      <button class="icon-close" data-close="aiOverlay">×</button>
+    </div>
+    <div class="ai-context"><span>Current context</span><strong id="aiContextLabel">Command Center</strong><small>JO₵YN • Artist workspace</small></div>
+    <div class="assistant-feed" id="assistantFeed">
+      <div class="assistant-msg"><span class="assistant-star">✦</span><p>I’m working inside the JO₵YN workspace. Ask me what to post, what to promote next, how to repurpose something, or how to update the public hub.</p></div>
+    </div>
+    <div class="suggestion-chips" id="aiChips"></div>
+    <form class="ai-composer" id="aiForm"><textarea id="aiInput" rows="3" placeholder="Ask about content, campaigns, releases, analytics or the Link Hub…"></textarea><button type="submit">Send ↑</button></form>
+  </aside>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="./os.js"></script>
+</body>
+</html>
