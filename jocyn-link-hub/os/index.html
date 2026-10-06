@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b0b0c">
-<meta name="color-scheme" content="dark">
-<title>JO₵YN OS — Social Command Center</title>
-<meta name="description" content="JO₵YN creator operating system prototype.">
-<link rel="stylesheet" href="./os.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta name="color-scheme" content="dark light">
+  <title>JO₵YN OS — Social Command Center</title>
+  <meta name="description" content="JO₵YN creator operating system prototype.">
+  <link rel="stylesheet" href="./os.css">
 </head>
 <body>
 <div class="app" id="app">
@@ -17,15 +17,15 @@
       <div><strong>JO₵YN OS</strong><span>Creator headquarters</span></div>
     </div>
 
-    <button class="workspace" id="workspaceBtn" type="button">
+    <button class="workspace" id="workspaceBtn" type="button" aria-label="Current workspace">
       <span class="workspace-avatar">J</span>
       <span class="workspace-copy"><strong>JO₵YN</strong><small>Artist workspace</small></span>
       <span class="chev">⌄</span>
     </button>
 
-    <button class="create-primary" id="createBtn" type="button"><span>＋</span>Create</button>
+    <button class="create-primary" id="createBtn" type="button"><span>＋</span> Create</button>
 
-    <nav class="nav-list">
+    <nav class="nav-list" id="navList">
       <button class="nav-item active" data-view="home"><span>⌂</span><b>Command Center</b></button>
       <button class="nav-item" data-view="content"><span>▦</span><b>Content Studio</b></button>
       <button class="nav-item" data-view="ideas"><span>✦</span><b>Ideas</b></button>
@@ -53,6 +53,7 @@
         <button class="round-btn ai-round" id="aiBtn" type="button" aria-label="Ask AI">✦</button>
       </div>
     </header>
+
     <main class="workspace-main" id="viewRoot" tabindex="-1"></main>
   </div>
 
@@ -77,8 +78,12 @@
 </div>
 
 <div class="overlay" id="commandOverlay" aria-hidden="true">
-  <section class="modal command-modal" role="dialog" aria-modal="true" aria-labelledby="commandInput">
-    <div class="command-input-wrap"><span>⌕</span><input id="commandInput" placeholder="Search or run a command…" autocomplete="off"><kbd>ESC</kbd></div>
+  <section class="modal command-modal" role="dialog" aria-modal="true" aria-labelledby="commandTitle">
+    <div class="command-input-wrap">
+      <span>⌕</span>
+      <input id="commandInput" placeholder="Search or run a command…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
     <div class="command-results" id="commandResults" aria-live="polite"></div>
   </section>
 </div>
@@ -89,12 +94,22 @@
       <div><span class="overline">CONTEXTUAL AI</span><h2 id="aiTitle">JO₵YN Assistant</h2></div>
       <button class="icon-close" data-close="aiOverlay">×</button>
     </div>
-    <div class="ai-context"><span>Current context</span><strong id="aiContextLabel">Command Center</strong><small>JO₵YN • Artist workspace</small></div>
+    <div class="ai-context">
+      <span>Current context</span>
+      <strong id="aiContextLabel">Command Center</strong>
+      <small>JO₵YN • Artist workspace</small>
+    </div>
     <div class="assistant-feed" id="assistantFeed">
-      <div class="assistant-msg"><span class="assistant-star">✦</span><p>I’m working inside the JO₵YN workspace. Ask me what to post, what to promote next, how to repurpose something, or how to update the public hub.</p></div>
+      <div class="assistant-msg">
+        <span class="assistant-star">✦</span>
+        <p>I’m working inside the JO₵YN workspace. Ask me what to post, what to promote next, how to repurpose something, or how to update the public hub.</p>
+      </div>
     </div>
     <div class="suggestion-chips" id="aiChips"></div>
-    <form class="ai-composer" id="aiForm"><textarea id="aiInput" rows="3" placeholder="Ask about content, campaigns, releases, analytics or the Link Hub…"></textarea><button type="submit">Send ↑</button></form>
+    <form class="ai-composer" id="aiForm">
+      <textarea id="aiInput" rows="3" placeholder="Ask about content, campaigns, releases, analytics or the Link Hub…"></textarea>
+      <button type="submit">Send ↑</button>
+    </form>
   </aside>
 </div>
 

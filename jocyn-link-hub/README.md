@@ -1,23 +1,40 @@
-# JO₵YN Link Hub — Prototype
+# JO₵YN Link Hub + Creator OS
 
-A mobile-first owned link-in-bio experience inspired by the interaction model of modern artist Linktree pages, but designed as a standalone JO₵YN web property.
+This project now has two coordinated prototype surfaces.
 
-## Prototype goals
-- Opens cleanly inside Instagram's in-app browser
-- Profile header + social destinations
-- Large featured campaign card
-- Compact release / video / project / event cards
-- Expandable visual tour collection
-- Persistent message/share CTA
-- Email capture placeholder
-- No framework dependency
+## Public experience
+- `/jocyn-link-hub/`
+- Mobile-first owned Linktree-style artist mini-site.
+- Current era, featured release, music/visual/event modules, share/contact and audience capture.
 
-## Next build
-1. Replace prototype artwork blocks with JO₵YN campaign assets.
-2. Connect Spotify, Apple Music, YouTube, Instagram, TikTok and contact destinations.
-3. Add real release pages instead of outbound-only links.
-4. Add a lightweight content/admin layer for ordering, scheduling and toggling cards.
-5. Add first-party click analytics and UTM attribution.
-6. Connect the final JO₵YN domain and use it as the Instagram bio URL.
+## Private experience
+- `/jocyn-link-hub/os/`
+- JO₵YN Creator OS / Social Command Center prototype.
+- One workspace in V1, architecture prepared for future multi-brand expansion.
 
-The prototype lives at `/jocyn-link-hub/`.
+### Current OS modules
+- Command Center
+- Content Studio
+- Idea Engine
+- Calendar
+- Campaigns
+- Projects / Releases
+- Link Hub Manager
+- Analytics
+- Media Library
+- Contextual AI drawer
+- Global Create launcher
+- Command palette (⌘ K / Ctrl K)
+- Mobile bottom-dock experience
+
+## Architecture principle
+
+The private OS should become the source of truth. The public Link Hub is one published output of the creator workspace.
+
+Changes to campaigns, releases, links, media and content should eventually be able to update the public experience and influence AI recommendations automatically.
+
+## Current prototype limitation
+
+The UI is interactive but uses local prototype data. It does **not** yet persist edits, upload media, publish to social platforms, or connect to external social APIs.
+
+See `PRODUCT_SPEC.md` for BUILD NOW / BUILD NEXT / FUTURE scope.
