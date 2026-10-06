@@ -228,11 +228,34 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="./data-layer.js"></script>
 <script src="./content.js"></script>
 <script>
 (function(){
   "use strict";
   var data=window.JOCYN_HUB;
+  var store=window.JOCYN_STORE||null;
+  var published=store?store.getPublished():null;
+  if(published&&data){
+    data.hero.title=published.heroTitle||data.hero.title;
+    data.hero.subtitle=published.heroSubtitle||data.hero.subtitle;
+    data.hero.status=published.heroStatus||data.hero.status;
+    data.hero.action=published.heroAction||data.hero.action;
+    var tb=data.featured.find(function(x){return x.id==='talk-bout'});
+    if(tb){
+      tb.title=published.featuredTitle||tb.title;
+      tb.subtitle=published.featuredSubtitle||tb.subtitle;
+      tb.actions=[published.featuredCta||'Listen now','Watch','Credits'];
+      tb.hidden=published.featuredVisible===false;
+    }
+    data.featured.forEach(function(item){
+      if(item.id==='chasing-fog'&&published.chasingVisible===false)item.hidden=true;
+      if(item.id==='wanderlvst'&&published.wanderVisible===false)item.hidden=true;
+      if(item.id==='boarding-lounge'&&published.boardingVisible===false)item.hidden=true;
+    });
+  }
+  function track(type,payload){if(store)store.track(type,payload||{})}
+  track('page_view',{path:location.pathname,referrer:document.referrer||''});
   if(!data){document.body.innerHTML='<p style="padding:20px">Content failed to load.</p>';return}
   var $=function(q,root){return (root||document).querySelector(q)};
   var $$=function(q,root){return Array.prototype.slice.call((root||document).querySelectorAll(q))};
@@ -253,7 +276,7 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   $('#profileBio').textContent=data.profile.bio;
   data.socials.forEach(function(s){
     var a=document.createElement('a');a.href=safeHref(s.href);a.setAttribute('aria-label',s.label);a.innerHTML=icon(s.key);
-    if(s.href==='#')a.addEventListener('click',function(e){e.preventDefault();note(s.label+' link ready for your real URL.')});
+    a.addEventListener('click',function(e){track('destination_click',{destination:s.label,kind:'social'});if(s.href==='#'){e.preventDefault();note(s.label+' link ready for your real URL.')}});
     $('#socials').appendChild(a);
   });
   $('#heroKicker').textContent=data.hero.kicker;$('#heroTitle').textContent=data.hero.title;$('#heroStatus').textContent=data.hero.status;$('#heroSubtitle').textContent=data.hero.subtitle;$('#heroAction').textContent=data.hero.action;
@@ -261,21 +284,22 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
     closeContext();$('#sheetKicker').textContent=kicker||'JO₵YN';$('#sheetTitle').textContent=item.detailTitle||item.title;
     var body=$('#sheetBody');body.innerHTML='';
     var p=document.createElement('p');p.textContent=item.detailBody||item.subtitle||'';body.appendChild(p);
-    if(item.actions&&item.actions.length){var acts=document.createElement('div');acts.className='sheetActions';item.actions.forEach(function(label){var b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',function(){note(label+' destination is ready to connect.')});acts.appendChild(b)});body.appendChild(acts)}
+    if(item.actions&&item.actions.length){var acts=document.createElement('div');acts.className='sheetActions';item.actions.forEach(function(label){var b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',function(){track('destination_click',{destination:label,content:item.title||item.detailTitle||'JO₵YN'});note(label+' destination is ready to connect.')});acts.appendChild(b)});body.appendChild(acts)}
     setSheet(true);
   }
-  $('#heroAction').addEventListener('click',function(){openDetail(data.hero,'CURRENT ERA')});
+  $('#heroAction').addEventListener('click',function(){track('content_open',{content:data.hero.title,kind:'hero'});openDetail(data.hero,'CURRENT ERA')});
   data.featured.forEach(function(item){
+    if(item.hidden)return;
     var b=document.createElement('article');b.className='linkcard';b.dataset.id=item.id;
     b.innerHTML='<button type="button" class="cardMain" aria-label="Open '+item.title+'"><div class="art '+(item.artClass||'mono')+'">'+item.art+'</div><div class="cardText"><div class="cardTop"><strong>'+item.title+'</strong>'+(item.badge?'<em class="badge">'+item.badge+'</em>':'')+'</div><span>'+item.subtitle+'</span></div></button><button type="button" class="kebab" aria-label="More options for '+item.title+'">•••</button>';
-    $('.cardMain',b).addEventListener('click',function(){openDetail(item,item.type.toUpperCase())});
+    $('.cardMain',b).addEventListener('click',function(){track('content_open',{content:item.title,kind:item.type});openDetail(item,item.type.toUpperCase())});
     $('.kebab',b).addEventListener('click',function(e){e.stopPropagation();openContext(e.currentTarget,item)});
     $('#featuredStack').appendChild(b);
   });
   data.collections.forEach(function(c){
     var b=document.createElement('button');b.type='button';b.className='collection';b.id=c.id==='live'?'live':'';
     b.innerHTML='<div class="collectionVisual"><div class="collectionLabel">'+c.label+'</div></div><div class="collectionFoot"><div><strong>'+c.title+'</strong><span>'+c.subtitle+'</span></div><div class="circleArrow">→</div></div>';
-    b.addEventListener('click',function(){openCollection(c)});$('#collectionGrid').appendChild(b);
+    b.addEventListener('click',function(){track('content_open',{content:c.title,kind:'collection'});openCollection(c)});$('#collectionGrid').appendChild(b);
   });
   function openCollection(c){
     $('#sheetKicker').textContent=c.label;$('#sheetTitle').textContent=c.title;var body=$('#sheetBody');body.innerHTML='';
@@ -293,9 +317,10 @@ button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(-
   async function share(payload){if(navigator.share){try{await navigator.share(payload);return}catch(e){if(e&&e.name==='AbortError')return}}note('Share is ready on the hosted prototype.')}
   function sharePage(){share({title:'JO₵YN',text:'JO₵YN — official artist hub',url:location.href})}
   $('#topShare').addEventListener('click',sharePage);$('#bottomShare').addEventListener('click',sharePage);
-  $('#messageBtn').addEventListener('click',function(){openDetail({title:'Message JO₵YN',detailTitle:'Connect',detailBody:'This button can route to Instagram DM, email, booking or a dedicated contact form — whichever you want to prioritize.',actions:['Instagram DM','Email','Booking']},'CONTACT')});
-  $('#joinForm').addEventListener('submit',function(e){e.preventDefault();var input=$('#email');if(!input.checkValidity()){input.reportValidity();return}note('Signup UI confirmed — database connection is next.');input.value=''});
-  $$('[data-scroll]').forEach(function(btn){btn.addEventListener('click',function(){var target=btn.dataset.scroll;var el=target==='featured'?$('#featured'):target==='more'?$('#more'):target==='live'?$('#live'):$('#music');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});$$('[data-scroll]').forEach(function(x){x.classList.remove('active')});btn.classList.add('active')})});
+  $('#messageBtn').addEventListener('click',function(){track('message_intent',{source:'sticky'});openDetail({title:'Message JO₵YN',detailTitle:'Connect',detailBody:'This button can route to Instagram DM, email, booking or a dedicated contact form — whichever you want to prioritize.',actions:['Instagram DM','Email','Booking']},'CONTACT')});
+  $('#joinForm').addEventListener('submit',function(e){e.preventDefault();var input=$('#email');if(!input.checkValidity()){input.reportValidity();return}track('signup_intent',{source:'public_hub'});note('Signup captured in the prototype event stream.');input.value=''});
+  if(published&&published.emailVisible===false){var more=$('#more');if(more)more.style.display='none';}
+  $('[data-scroll]').forEach(function(btn){btn.addEventListener('click',function(){var target=btn.dataset.scroll;var el=target==='featured'?$('#featured'):target==='more'?$('#more'):target==='live'?$('#live'):$('#music');if(el)el.scrollIntoView({behavior:'smooth',block:'start'});$$('[data-scroll]').forEach(function(x){x.classList.remove('active')});btn.classList.add('active')})});
 })();
 </script>
 </body>
