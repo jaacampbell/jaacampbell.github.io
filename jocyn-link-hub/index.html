@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
+<title>JO₵YN — Official</title>
+<meta name="description" content="JO₵YN — music, visuals, releases, events and more.">
+<style>
+:root{
+  --bg:#0a0a0a;--surface:#141414;--surface2:#1b1b1b;--text:#f7f4ef;--muted:#a5a09a;
+  --line:rgba(255,255,255,.10);--accent:#efe8df;--ink:#0b0b0b;--radius:26px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+button{color:inherit}
+a{text-decoration:none;color:inherit}
+.shell{width:min(100%,760px);margin:0 auto;padding:18px 18px calc(116px + env(safe-area-inset-bottom))}
+.profile{padding:22px 4px 14px;text-align:center}
+.topline{display:flex;justify-content:flex-end;min-height:44px}
+.iconbtn{width:44px;height:44px;border:1px solid var(--line);background:var(--surface);border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.avatar{width:102px;height:102px;border-radius:50%;margin:2px auto 18px;border:1px solid var(--line);background:
+radial-gradient(circle at 30% 20%,rgba(255,255,255,.13),transparent 34%),
+linear-gradient(145deg,#262626,#090909);display:grid;place-items:center;font-weight:800;letter-spacing:-.08em;font-size:31px}
+.handle{font-size:30px;line-height:1;font-weight:780;letter-spacing:-.045em;margin:0}
+.tagline{margin:10px auto 0;max-width:520px;color:var(--muted);font-size:15px;line-height:1.45}
+.socials{display:flex;justify-content:center;gap:10px;margin:19px 0 2px}
+.socials a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);transition:.18s ease}
+.socials svg{width:20px;height:20px}
+.hero{margin-top:18px;background:var(--accent);color:var(--ink);border-radius:30px;overflow:hidden;position:relative}
+.hero-art{aspect-ratio:16/10;min-height:250px;background:
+radial-gradient(circle at 72% 26%,rgba(255,255,255,.82),transparent 16%),
+radial-gradient(circle at 28% 70%,rgba(255,255,255,.16),transparent 26%),
+linear-gradient(145deg,#615b58 0%,#c9c0b7 45%,#756e69 100%);position:relative;display:flex;align-items:flex-end;padding:25px}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 36%,rgba(0,0,0,.54))}
+.hero-copy{position:relative;z-index:1;color:#fff}
+.eyebrow{font-size:11px;font-weight:760;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+.hero-title{font-size:39px;line-height:.93;letter-spacing:-.055em;margin:8px 0 0;font-weight:820}
+.hero-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 19px}
+.hero-foot strong{font-size:17px}
+.hero-foot span{display:block;font-size:12px;color:#5d5853;margin-top:2px}
+.cta{border:0;background:#0a0a0a;color:#fff;border-radius:999px;min-height:46px;padding:0 18px;font-weight:720;cursor:pointer}
+.section-title{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:30px 3px 12px}
+.linkstack{display:grid;gap:11px}
+.linkcard{width:100%;min-height:90px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:12px;display:grid;grid-template-columns:66px minmax(0,1fr) 38px;gap:13px;align-items:center;text-align:left;cursor:pointer}
+.thumb{width:66px;height:66px;border-radius:14px;background:linear-gradient(145deg,#3a3a3a,#111);display:grid;place-items:center;overflow:hidden;color:#fff;font-weight:800;font-size:11px;letter-spacing:.08em;text-align:center;padding:5px}
+.thumb.fog{background:linear-gradient(145deg,#7b7f83,#202529)}
+.thumb.album{background:linear-gradient(145deg,#533c42,#120d10)}
+.thumb.event{background:linear-gradient(145deg,#b8aa96,#302a24);color:#111}
+.thumb.video{background:linear-gradient(145deg,#443b37,#0e0d0d)}
+.cardcopy{min-width:0}
+.cardcopy strong{font-size:17px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cardcopy span{display:block;color:var(--muted);font-size:13px;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.more{justify-self:end;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:var(--muted)}
+.collection{background:var(--surface);border:1px solid var(--line);border-radius:26px;overflow:hidden}
+.collection-art{aspect-ratio:1.8/1;background:
+linear-gradient(120deg,rgba(255,255,255,.08),transparent 36%),
+linear-gradient(145deg,#1f1f1f,#6b625d);display:grid;place-items:center}
+.collection-art .word{font-size:38px;font-weight:820;letter-spacing:-.06em}
+.collection-bottom{padding:18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.collection-bottom strong{font-size:18px}
+.collection-bottom span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.arrowbtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#202020;display:grid;place-items:center;cursor:pointer}
+.join{margin-top:28px;border:1px solid var(--line);border-radius:28px;padding:21px;background:linear-gradient(145deg,#171717,#101010)}
+.join h2{font-size:24px;letter-spacing:-.04em;margin:0 0 7px}
+.join p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
+.joinrow{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:16px}
+.join input{min-width:0;background:#0c0c0c;color:#fff;border:1px solid var(--line);border-radius:999px;padding:0 16px;min-height:49px;font-size:16px;outline:none}
+.join input:focus{border-color:rgba(255,255,255,.35)}
+.join button{border:0;border-radius:999px;background:var(--accent);color:var(--ink);padding:0 17px;font-weight:750}
+.footer{text-align:center;color:#74706c;font-size:12px;line-height:1.6;padding:28px 0 0}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:9px 16px calc(9px + env(safe-area-inset-bottom));pointer-events:none}
+.stickyinner{width:min(calc(100% - 18px),560px);margin:0 auto;background:rgba(238,232,224,.94);color:#0a0a0a;border-radius:999px;padding:7px;display:grid;grid-template-columns:1fr auto;gap:7px;box-shadow:0 18px 60px rgba(0,0,0,.35);backdrop-filter:blur(18px);pointer-events:auto}
+.message{border:0;background:transparent;min-height:50px;font-weight:780;font-size:16px;cursor:pointer}
+.share{width:50px;height:50px;border:0;background:#0a0a0a;color:#fff;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+.sheetback{position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:60;display:none;align-items:flex-end}
+.sheetback.open{display:flex}
+.sheet{width:min(100%,760px);margin:0 auto;background:#f2eee8;color:#0a0a0a;border-radius:30px 30px 0 0;max-height:86%;overflow:auto;padding:13px 18px calc(28px + env(safe-area-inset-bottom))}
+.grab{width:44px;height:5px;border-radius:5px;background:#c6beb5;margin:0 auto 16px}
+.sheettop{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.sheettop h2{font-size:28px;letter-spacing:-.045em;margin:0}
+.close{width:42px;height:42px;border-radius:50%;border:0;background:#ded7cf;cursor:pointer}
+.tourgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.datecard{background:#fff;border-radius:22px;overflow:hidden}
+.dateart{aspect-ratio:1.05/1;background:linear-gradient(145deg,#d8cfc5,#7c736b);display:flex;align-items:flex-end;padding:14px;font-weight:820;font-size:20px}
+.datecopy{padding:13px}
+.datecopy strong{font-size:14px;display:block}
+.datecopy span{font-size:12px;color:#706b66;display:block;margin-top:4px}
+.toast{position:fixed;left:50%;bottom:108px;transform:translate(-50%,18px);background:#fff;color:#111;border-radius:999px;padding:11px 16px;font-size:13px;font-weight:650;z-index:100;opacity:0;pointer-events:none;transition:.22s ease;white-space:nowrap;max-width:calc(100% - 34px);overflow:hidden;text-overflow:ellipsis}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){.shell{padding-left:22px;padding-right:22px}.hero-art{min-height:365px}.hero-title{font-size:58px}.tourgrid{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.socials a,.toast{transition:none}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <section class="profile">
+    <div class="topline"><button class="iconbtn" id="topShare" aria-label="Share page">↗</button></div>
+    <div class="avatar" aria-label="JO₵YN profile placeholder">JO₵</div>
+    <h1 class="handle">@jocyn</h1>
+    <p class="tagline">Artist • creator • world builder<br>Music, visuals, live moments and what comes next.</p>
+    <nav class="socials" aria-label="Social links">
+      <a href="#" data-proto="Instagram" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" data-proto="TikTok" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 3v10.1a3.35 3.35 0 1 1-2.4-3.21V7.26A5.85 5.85 0 1 0 17 13.1V8.04c1.13.82 2.48 1.27 3.88 1.28V6.67c-2.58-.18-3.89-1.72-4.1-3.67H14.5Z"/></svg></a>
+      <a href="#" data-proto="YouTube" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 7.2a2.8 2.8 0 0 0-2-2C17.7 4.7 12 4.7 12 4.7s-5.7 0-7.5.5a2.8 2.8 0 0 0-2 2A29 29 0 0 0 2 12a29 29 0 0 0 .5 4.8 2.8 2.8 0 0 0 2 2c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a2.8 2.8 0 0 0 2-2A29 29 0 0 0 22 12a29 29 0 0 0-.5-4.8ZM10 15.2V8.8l5.5 3.2-5.5 3.2Z"/></svg></a>
+      <a href="#" data-proto="Spotify" aria-label="Spotify"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.58 14.43a.62.62 0 0 1-.85.2c-2.32-1.42-5.24-1.74-8.68-.95a.62.62 0 1 1-.28-1.2c3.77-.86 7-.5 9.61 1.1.3.17.39.56.2.85Zm1.22-2.7a.77.77 0 0 1-1.06.25c-2.66-1.63-6.72-2.1-9.87-1.15a.77.77 0 1 1-.45-1.47c3.6-1.09 8.08-.56 11.13 1.31.36.22.47.7.25 1.06Zm.1-2.82C14.7 9.02 9.44 8.85 6.38 9.77A.92.92 0 1 1 5.85 8c3.52-1.06 9.34-.85 12.98 1.31a.92.92 0 1 1-.94 1.59Z"/></svg></a>
+    </nav>
+  </section>
+
+  <section class="hero">
+    <div class="hero-art">
+      <div class="hero-copy">
+        <div class="eyebrow">Current era</div>
+        <div class="hero-title">WANDERLVST</div>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div><strong>Enter the world</strong><span>Music • film • story</span></div>
+      <button class="cta" data-proto="WANDERLVST">Explore</button>
+    </div>
+  </section>
+
+  <div class="section-title">Now</div>
+  <section class="linkstack">
+    <button class="linkcard" data-proto="Chasing Fog">
+      <div class="thumb fog">CHASING<br>FOG</div>
+      <div class="cardcopy"><strong>Chasing Fog</strong><span>Latest single • Listen now</span></div>
+      <div class="more">•••</div>
+    </button>
+    <button class="linkcard" data-proto="Latest visual">
+      <div class="thumb video">WATCH</div>
+      <div class="cardcopy"><strong>Latest Visual</strong><span>Films • visualizers • behind the scenes</span></div>
+      <div class="more">•••</div>
+    </button>
+    <button class="linkcard" data-proto="WANDERLVST project">
+      <div class="thumb album">WL</div>
+      <div class="cardcopy"><strong>WANDERLVST</strong><span>Project hub • releases • credits</span></div>
+      <div class="more">•••</div>
+    </button>
+    <button class="linkcard" data-proto="Boarding Lounge">
+      <div class="thumb event">BOARDING<br>LOUNGE</div>
+      <div class="cardcopy"><strong>Boarding Lounge</strong><span>Listening experience • event details</span></div>
+      <div class="more">•••</div>
+    </button>
+  </section>
+
+  <div class="section-title">Live</div>
+  <section class="collection">
+    <div class="collection-art"><div class="word">ON THE MOVE</div></div>
+    <div class="collection-bottom">
+      <div><strong>Tour & Appearances</strong><span>Dates, cities and tickets</span></div>
+      <button class="arrowbtn" id="openTour" aria-label="Open tour dates">→</button>
+    </div>
+  </section>
+
+  <section class="join">
+    <h2>Stay in the loop.</h2>
+    <p>One place for new music, drops, event announcements and private updates.</p>
+    <form class="joinrow" id="joinForm">
+      <input type="email" id="email" autocomplete="email" placeholder="Email address" aria-label="Email address" required>
+      <button type="submit">Join</button>
+    </form>
+  </section>
+
+  <footer class="footer">JO₵YN • Official artist hub<br>Prototype v1 — fully owned, no Linktree dependency.</footer>
+</main>
+
+<div class="sticky" aria-label="Persistent actions">
+  <div class="stickyinner">
+    <button class="message" data-proto="Message JO₵YN">Message</button>
+    <button class="share" id="bottomShare" aria-label="Share page">↗</button>
+  </div>
+</div>
+
+<div class="sheetback" id="tourSheet" aria-hidden="true">
+  <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="tourTitle">
+    <div class="grab"></div>
+    <div class="sheettop">
+      <h2 id="tourTitle">Tour & appearances</h2>
+      <button class="close" id="closeTour" aria-label="Close tour dates">✕</button>
+    </div>
+    <div class="tourgrid">
+      <article class="datecard"><div class="dateart">BARCELONA</div><div class="datecopy"><strong>Barcelona, Spain</strong><span>Travel / appearance</span></div></article>
+      <article class="datecard"><div class="dateart">PARIS</div><div class="datecopy"><strong>Paris, France</strong><span>Travel / appearance</span></div></article>
+      <article class="datecard"><div class="dateart">AMSTERDAM</div><div class="datecopy"><strong>Amsterdam, Netherlands</strong><span>Travel / appearance</span></div></article>
+      <article class="datecard"><div class="dateart">LONDON</div><div class="datecopy"><strong>London, England</strong><span>Travel / appearance</span></div></article>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var toast=document.getElementById("toast"),timer;
+  function note(msg){clearTimeout(timer);toast.textContent=msg;toast.classList.add("show");timer=setTimeout(function(){toast.classList.remove("show")},2300)}
+  document.querySelectorAll("[data-proto]").forEach(function(el){
+    el.addEventListener("click",function(e){e.preventDefault();note(el.getAttribute("data-proto")+" — destination will connect in the next build.")})
+  });
+  var sheet=document.getElementById("tourSheet");
+  function setSheet(open){sheet.classList.toggle("open",open);sheet.setAttribute("aria-hidden",open?"false":"true");document.body.style.overflow=open?"hidden":""}
+  document.getElementById("openTour").addEventListener("click",function(){setSheet(true)});
+  document.getElementById("closeTour").addEventListener("click",function(){setSheet(false)});
+  sheet.addEventListener("click",function(e){if(e.target===sheet)setSheet(false)});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")setSheet(false)});
+  async function sharePage(){
+    if(navigator.share){try{await navigator.share({title:"JO₵YN",text:"JO₵YN — official artist hub",url:location.href});return}catch(e){}}
+    note("Share is ready when this prototype is on your final domain.")
+  }
+  document.getElementById("topShare").addEventListener("click",sharePage);
+  document.getElementById("bottomShare").addEventListener("click",sharePage);
+  document.getElementById("joinForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var email=document.getElementById("email");
+    if(!email.checkValidity()){email.reportValidity();return}
+    note("Captured for prototype — mailing list backend comes next.");
+    email.value="";
+  });
+})();
+</script>
+</body>
+</html>
