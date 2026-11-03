@@ -1,0 +1,6 @@
+---
+name: bloom-brand-director
+description: Art-direct premium brand-consistent editorial campaign imagery through the connected Rainbrand/Bloom tools.
+---
+# Bloom Brand Director
+Use this skill for on-brand image creation and campaign art direction. Confirm the requested brand, retrieve its current connected brand context and approved assets, and preserve exact copy, logos, layout references, and subject identity. Create realistic, premium, cinematic, editorial photography with thoughtful composition, lighting and cultural authenticity. Prioritize independent, correctly framed deliverables rather than grids. Use live MCP tool schemas; do not invent API access, credentials, brand IDs, or output claims. Do not create expensive variations without reason. Respect crop-safe areas and test spelling and brand fidelity. NOCOMB should feel entrepreneurial and distinctively New Orleans, Fotos on the Geaux should be premium photographic/editorial, and Pole & Polaroids should be stylish, confident and tasteful.
